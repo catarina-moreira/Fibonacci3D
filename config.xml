@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<configurations>
+	
+	<!--  -->
+	<sphere>
+		<color>BLUE</color>
+		<size>0.1</size>
+		
+		<evenNumbers>false</evenNumbers>
+		<evenNumbersColor>ORANGE</evenNumbersColor>
+		
+		<primeNumbers>false</primeNumbers>
+		<primeNumbersColor>RED</primeNumbersColor>
+	</sphere>
+	
+	<!--  -->
+	<text>
+		<textOn>true</textOn>
+		<color>ORANGE</color>
+		<size>60</size>
+		
+		<primeNumbersColor>RED</primeNumbersColor>
+		<evenNumbersColor>ORANGE</evenNumbersColor>
+	</text>
+	
+	<!--  -->
+	<edges>
+		<edgesOn>false</edgesOn>
+		<color>ORANGE</color>
+	</edges>
+	
+	<!--  -->
+	<maxNumberOfNodesToDisplay>
+		<value>300</value>
+	</maxNumberOfNodesToDisplay>
+	
+	<!--  -->
+	<zoomEffectOn>
+		<value>false</value>
+	</zoomEffectOn>
+	
+	<!--  -->
+	<goldenRatio>
+		<value>1.618034</value>
+	</goldenRatio>
+	
+	<!--  -->
+	<expansionRate>
+		<value>4</value>
+	</expansionRate>
+	
+</configurations>
