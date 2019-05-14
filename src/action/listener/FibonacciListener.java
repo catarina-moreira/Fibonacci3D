@@ -11,6 +11,7 @@ import fibo.MyLineArray;
 import fibo.MySphere;
 import fibo.MyText;
 
+
 /*
 ============================================================================
 Name        : FibonacciListener.java
@@ -90,6 +91,7 @@ public class FibonacciListener implements ActionListener
 		initializeSpiralVars( );	// sets all coordinates to zero
 		
 		initializePlot( );			// starts drawing the spiral
+		
 	}
 	
 	/**
@@ -192,25 +194,7 @@ public class FibonacciListener implements ActionListener
 			POSITION_Z += 0.05;		
 		
 		data.put( ID, new Point3f( POSITION_X, POSITION_Y, POSITION_Z ) );
-		System.out.println( ID + " " + POSITION_X + " " + POSITION_Y + " " + POSITION_Z );
-		
-		/**
-		 * In case the user wishes to display the edges
-		 */
-		if( Config.EDGE_ON )
-		{
-			if( ID > 13 )
-			{
-				Point3f old = data.get( ID - 13 );
-				
-				//System.err.println( ID + " " + (ID - 13) );
-				
-				//System.out.println("ID = " + ( ID - 13 ) + "\t" +  data.get( ID - 13 ) + "\tID = " + ID + "\t" + data.get( ID ) );
-				
-				//MyLineArray edge = new MyLineArray( Config.EDGE_COLOR );
-				//edge.updateCoordinates( ID, old.x, old.y, old.z, POSITION_X, POSITION_Y, POSITION_Z );
-			}
-		}	
+		System.out.println( ID + " " + POSITION_X + " " + POSITION_Y + " " + POSITION_Z );	
 	}
 	
 	/**
@@ -301,21 +285,31 @@ public class FibonacciListener implements ActionListener
 	 */
 	public void connectSpiralArms( )
 	{
-		int i = 1;
-		for( int j = 15; j < data.size( ); j++ )
+		/**
+		 * In case the user wishes to display the edges
+		 */
+		if( !Config.EDGE_ON )
+			return;
+		
+		Point3f dataOrigin = new Point3f(0.0f, 0.0f, 1.0f);
+		Point3f nextPoint = new Point3f( 0.33333334f, 0.0f, 1.0f);
+		
+		try {
+		    Thread.sleep(1000);                 //1000 milliseconds is one second.
+		} catch(InterruptedException ex) {
+		    Thread.currentThread().interrupt();
+		}
+		
+		new MyLineArray( Config.EDGE_COLOR, dataOrigin, nextPoint );
+		
+		for( int j = 14; j < data.size( ); j++ )
 		{
 			Point3f dataPointOld = data.get( j - 13 );
 			Point3f dataPointNew = data.get( j );
 				
-			System.out.println( "j - j_old = " + j + " " + dataPointNew.x + " , " + dataPointNew.y + " , " + dataPointNew.z +" " + ( j-13 ) + " " + dataPointOld.x + " , " + dataPointOld.y + " , " + dataPointOld.z );
-				
 			//1.033f , -0.657f , 0.0f, 1.545f , -1.5374f , 0.0f
-			MyLineArray edge = new MyLineArray( Config.EDGE_COLOR );
-			//edge.updateCoordinates( i, dataPointOld.x, dataPointOld.y, dataPointOld.z, dataPointNew.x, dataPointNew.y, dataPointNew.z );
-			edge.updateCoordinates( i, 1.55f , -1.55f , 1.0f, 1.03f , -0.66f , 1.0f );
-			i++;
+			new MyLineArray( Config.EDGE_COLOR, dataPointOld, dataPointNew );
+			
 		}
 	}
-	
-	
 }

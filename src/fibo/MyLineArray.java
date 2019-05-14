@@ -20,11 +20,8 @@ Description :
 
 public class MyLineArray extends LineArray
 {
-	/**
-	 * 
-	 * @param color
-	 */
-	public MyLineArray( Color3f color  )
+
+	public MyLineArray( Color3f color, Point3f point1, Point3f point2  )
 	{
 		/**
 		 * Constructs an empty LineArray object with the specified number of vertices, vertex format. 
@@ -46,6 +43,8 @@ public class MyLineArray extends LineArray
 		 */
 		super( 2000, LineArray.COORDINATES );
 		this.setCapability( LineArray.ALLOW_COORDINATE_WRITE );
+		
+		this.updateCoordinates(0, point1, point2);
 		
 		/**
 		 * Changes the color of the MyLineArray object to the specified color
@@ -92,6 +91,12 @@ public class MyLineArray extends LineArray
 									float x2, float y2, float z2 )
 	{
 		Point3f[ ] points = { new Point3f( x1, y1, z1), new Point3f( x2, y2, z2 ) };
+		this.setCoordinates( ID, points );
+	}
+	
+	public void updateCoordinates( int ID, Point3f p1, Point3f p2)
+	{
+		Point3f[ ] points = {p1, p2 };
 		this.setCoordinates( ID, points );
 	}
 	

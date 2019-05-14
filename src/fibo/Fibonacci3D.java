@@ -50,10 +50,10 @@ public class Fibonacci3D extends JFrame
 	/**
 	 * Animation delay time
 	 */
-	private static final int DELAY = 100;
+	private static final int DELAY = 70;
 	
 	/**
-	 * Initialize brach that is going to store all java 3d objects
+	 * Initialize branch that is going to store all java 3d objects
 	 */
 	public static BranchGroup branch = new BranchGroup( );
 	
@@ -109,7 +109,7 @@ public class Fibonacci3D extends JFrame
 		setTitle( "Fibonacci 3D" );
 		setDefaultCloseOperation( WindowConstants.EXIT_ON_CLOSE );
 		setSize( 750, 750 );
-		
+		setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		setResizable( true );
 		setVisible( true );
 		requestFocus( );
